@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>leaflet vt example</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css"/>
+<style>
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet-src.js"></script>
+<script src="./Leaflet.MapboxVectorTile/dist/Leaflet.MapboxVectorTile.js"></script>
+<script>
+var map = L.map('map', {
+  minZoom:7
+}).setView([33.447634615792246,133.18053969375], 8)
+
+L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png').addTo(map);
+
+
+var mvtSource = new L.TileLayer.MVTSource({
+//  debug: true,
+  url: "tiles/{z}/{x}/{y}.pbf",
+  filter: function(feature, context) {
+    if (feature.layer.name === 'japan_citygeojson') {
+      return true;
+    }
+    return false;
+  },
+
+  style: function (feature) {
+    var style = {};
+    var type = feature.type;
+    switch (type) {
+      case 1: //'Point'
+        style.color = 'rgba(49,79,79,1)';
+        break;
+      case 2: //'LineString'
+        style.color = 'rgba(161,217,155,0.8)';
+        break;
+      case 3: //'Polygon'
+        style.color = 'rgba(255,0,0, 0.5)';
+        style.outline = {
+          color: strokeColor,
+          size: 1
+        };
+        break;
+    }
+    return style;
+  }
+
+});
+
+var fillColor = 'rgba(149,139,255,0.4)';
+var strokeColor = 'rgb(20,20,20)';
+
+map.addLayer(mvtSource);
+    
+</script>
+</body>
+</html>

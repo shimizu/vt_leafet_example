@@ -1,0 +1,12 @@
+{
+    "description": "japan.mbtiles",
+    "json": "{\"vector_layers\": [ { \"id\": \"japan_citygeojson\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 14, \"fields\": {\"N03_001\": \"String\", \"N03_004\": \"String\", \"N03_007\": \"String\", \"N03_003\": \"String\", \"N03_002\": \"String\"} } ] }",
+    "format": "pbf",
+    "bounds": "122.933653,20.422746,153.986844,45.557243",
+    "maxzoom": "14",
+    "version": "1",
+    "type": "overlay",
+    "minzoom": "0",
+    "center": "135.977783,33.660353,14",
+    "name": "japan.mbtiles"
+}
