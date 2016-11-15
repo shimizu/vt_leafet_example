@@ -1,3 +1,3 @@
 [submodule "Leaflet.MapboxVectorTile"]
 	path = Leaflet.MapboxVectorTile
-	url = git@github.com:SpatialServer/Leaflet.MapboxVectorTile.git
+  url = https://github.com/SpatialServer/Leaflet.MapboxVectorTile.git
